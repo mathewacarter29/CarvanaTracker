@@ -1,0 +1,140 @@
+Car Name: 2014 Hyundai Tucson
+Mileage: SE • 29,820 miles
+Price: $19,990
+Monthly Payment: Est.$398/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2014 MAZDA CX-9
+Mileage: Touring • 92,188 miles
+Price: $18,990
+Monthly Payment: Est.$414/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2020 Hyundai Kona
+Mileage: SEL • 28,391 miles
+Price: $23,590
+Monthly Payment: Est.$456/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2018 Ford EcoSport
+Mileage: Titanium • 30,200 miles
+Price: $19,990
+Monthly Payment: Est.$387/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2014 Jeep Patriot
+Mileage: Latitude • 61,343 miles
+Price: $15,990
+Monthly Payment: Est.$329/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2016 Dodge Journey
+Mileage: Crossroad Plus • 72,214 miles
+Price: $18,590
+Monthly Payment: Est.$383/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2017 Jeep Renegade
+Mileage: Limited • 76,599 miles
+Price: $18,990
+Monthly Payment: Est.$370/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2019 Volkswagen Tiguan
+Mileage: 2.0T S • 40,158 miles
+Price: $21,990
+Monthly Payment: Est.$426/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2016 BMW X3
+Mileage: xDrive28i • 58,672 miles
+Price: $23,590
+Monthly Payment: Est.$471/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2018 Ford EcoSport
+Mileage: SE • 83,125 miles
+Price: $16,590
+Monthly Payment: Est.$344/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2014 Ford Escape
+Mileage: SE • 65,031 miles
+Price: $16,590
+Monthly Payment: Est.$342/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2020 Buick Encore GX
+Mileage: Preferred • 5,487 miles
+Price: $24,990
+Monthly Payment: Est.$482/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2016 Mitsubishi Outlander
+Mileage: SE • 48,608 miles
+Price: $19,590
+Monthly Payment: Est.$391/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2016 Jeep Compass
+Mileage: High Altitude Edition • 87,090 miles
+Price: $16,990
+Monthly Payment: Est.$352/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2012 Jeep Grand Cherokee
+Mileage: Overland • 87,200 miles
+Price: $19,990
+Monthly Payment: Est.$436/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2013 GMC Terrain
+Mileage: SLE-2 • 90,189 miles
+Price: $15,990
+Monthly Payment: Est.$349/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2018 Jeep Compass
+Mileage: Latitude • 46,294 miles
+Price: $21,990
+Monthly Payment: Est.$427/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2014 INFINITI QX60
+Mileage: 3.5 • 97,446 miles
+Price: $20,590
+Monthly Payment: Est.$438/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2012 Jeep Liberty
+Mileage: Sport • 34,699 miles
+Price: $18,990
+Monthly Payment: Est.$389/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
+Car Name: 2013 Jeep Patriot
+Mileage: Latitude • 87,174 miles
+Price: $14,590
+Monthly Payment: Est.$319/mo
+Shipping Cost: Free Shipping • 
+Delivery: Get it by Wednesday
+
