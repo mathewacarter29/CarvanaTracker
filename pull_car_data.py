@@ -7,7 +7,7 @@ import json
 import os
 import time
 
-def get_cars_on_page(url, dict):
+def get_cars_on_page(url):
   page = requests.get(url)
 
   while page.status_code != 200:
@@ -36,13 +36,13 @@ def get_cars_on_page(url, dict):
   # going by the data-qa attribute every field element has
   # mileage has other crap in it - split after weird character
   fields = ['make-model', 'trim-mileage', 'price', 'monthly-payment', 'get-it-by']
-
+  data = {}
   for result in results:
     car_id = result.find('a').get('href')
 
     car_data = {'make-model': '', 'mileage': '', 'price': '', 'monthly-payment': '', 'get-it-by': ''}
     
-    for index, field in enumerate(fields):
+    for field in fields:
       curr_field_value = result.find(attrs={'data-qa': field})
       field_text = curr_field_value.get_text()
       if field == 'trim-mileage':
@@ -60,19 +60,23 @@ def get_cars_on_page(url, dict):
       else:
         car_data[field] = field_text
 
-    dict[car_id] = car_data
+    data[car_id] = car_data
+
+  return data
+
 
 def main():
   url = "https://www.carvana.com/cars/suv"
   dict = {}
 
-  NUM_PAGES = 100
+  NUM_PAGES = 10
   for page in range(1, NUM_PAGES + 1):
     curr_url = url
     if page > 1:
       curr_url += '?page=' + str(page)
 
-    get_cars_on_page(curr_url, dict)
+    data = get_cars_on_page(curr_url)
+    dict.update(data) 
 
   json_data = json.dumps(dict, indent = 4)
 
@@ -82,7 +86,7 @@ def main():
     os.mkdir(folder_name)
 
   now = str(datetime.now())
-  filename = now.replace(' ', '_') + '_carvana.json'
+  filename = now.replace(' ', '_') + '_suv.json'
   filename = 'car_data/' + filename.replace(':', ';')
   with open(filename, 'w') as output_file:
     output_file.write(json_data)
