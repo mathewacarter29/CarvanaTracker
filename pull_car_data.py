@@ -5,9 +5,26 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import json
 import os
+import time
 
 def get_cars_on_page(url, dict):
   page = requests.get(url)
+
+  while page.status_code != 200:
+    print('Error with status code', page.status_code, 'when accessing:', url)
+    
+    # We made too many requests too quickly, sleep for a bit then try again
+    if page.status_code == 429:
+      sleep_time = page.headers['Retry-After']
+      print('Sleeping for', sleep_time, 'seconds')
+      time.sleep(int(sleep_time))
+    else:
+      print('Status code', page.status_code, 'when trying:', url)
+      return
+    
+    page = requests.get(url)
+
+  print('Processing data for:', url)
   soup = BeautifulSoup(page.content, 'html.parser')
 
   results = soup.find_all(attrs={'class': 'result-tile'})
@@ -49,7 +66,7 @@ def main():
   url = "https://www.carvana.com/cars/suv"
   dict = {}
 
-  NUM_PAGES = 10
+  NUM_PAGES = 100
   for page in range(1, NUM_PAGES + 1):
     curr_url = url
     if page > 1:
