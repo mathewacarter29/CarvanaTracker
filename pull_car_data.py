@@ -6,8 +6,10 @@ from datetime import datetime
 import json
 import os
 import time
+import concurrent.futures
+import threading 
 
-def get_cars_on_page(url):
+def get_cars_on_page(url, dict, lock):
   page = requests.get(url)
 
   while page.status_code != 200:
@@ -62,21 +64,28 @@ def get_cars_on_page(url):
 
     data[car_id] = car_data
 
-  return data
+  lock.acquire()
+  dict.update(data)
+  lock.release()
 
+  # time.sleep(1)
+  
 
 def main():
-  url = "https://www.carvana.com/cars/suv"
+  url = "https://www.carvana.com/cars"
+  car_types = ['trucks', 'hatchback', 'sedan', 'coupe', 'electric', 'suv']
   dict = {}
 
-  NUM_PAGES = 10
-  for page in range(1, NUM_PAGES + 1):
-    curr_url = url
-    if page > 1:
-      curr_url += '?page=' + str(page)
-
-    data = get_cars_on_page(curr_url)
-    dict.update(data) 
+  with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+    lock = threading.Lock()
+    NUM_PAGES = 50
+    for page in range(1, NUM_PAGES + 1):
+      for type in car_types:
+        curr_url = f'{url}/{type}'
+        if page > 1:
+          curr_url += '?page=' + str(page)
+        
+        executor.submit(get_cars_on_page, curr_url, dict, lock)
 
   json_data = json.dumps(dict, indent = 4)
 
@@ -86,7 +95,7 @@ def main():
     os.mkdir(folder_name)
 
   now = str(datetime.now())
-  filename = now.replace(' ', '_') + '_suv.json'
+  filename = now.replace(' ', '_') + '_carvana.json'
   filename = 'car_data/' + filename.replace(':', ';')
   with open(filename, 'w') as output_file:
     output_file.write(json_data)
