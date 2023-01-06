@@ -1,14 +1,12 @@
-#!/usr/bin/env python
-
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
-import json
-import os
 import time
-import concurrent.futures
-import threading 
 
+'''
+Goes through a carvana URL and pulls all the cars on the page, adding them to dict
+Needs to use lock param or else theres race condition
+'''
 def get_cars_on_page(url, dict, lock):
   page = requests.get(url)
 
@@ -58,14 +56,21 @@ def get_cars_on_page(url, dict, lock):
       elif field == 'get-it-by':
         car_data[field] = field_text.replace('Get it by ', '')
 
+      elif field == 'price':
+        # Take the $ and , out of the price so the JSON just has the price as a number
+        price = field_text.replace('$', '')
+        price = int(price.replace(',', ''))
+        car_data[field] = price
+
       else:
         car_data[field] = field_text
 
     data[car_id] = car_data
 
   lock.acquire()
+  prev = len(dict)
   dict.update(data)
-  print(f'Got {len(data)} cars on page {url}')
+  print(f'Got {len(dict) - prev} cars on page {url}')
   lock.release()
 
   # time.sleep(1)
@@ -82,50 +87,5 @@ def get_max_pages(url, page, max_pages_dict):
   
   soup = BeautifulSoup(req.content, 'html.parser')
   page_text = soup.find(attrs={'data-qa': 'pagination-text'}).get_text()
-  print(page_text)
   max_page = page_text.split()[-1]
   max_pages_dict[page] = int(max_page)
-
-
-def main():
-  url = "https://www.carvana.com/cars"
-  car_types = ['trucks', 'hatchback', 'sedan', 'coupe', 'electric', 'suv']
-  dict = {}
-
-  # To get number of pages, search HTML for data-qa=pagination-text
-  max_pages = {'trucks': 0, 'hatchback': 0, 'sedan': 0, 'coupe': 0, 'electric': 0, 'suv': 0}
-  with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
-    for type in car_types:
-      curr_url = f'{url}/{type}'
-      executor.submit(get_max_pages, curr_url, type, max_pages)
-
-  print(max_pages)
-  
-  with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-    lock = threading.Lock()
-    for type in car_types:
-      for page in range(1, max_pages[type] + 1):
-        curr_url = f'{url}/{type}'
-        if page > 1:
-          curr_url += '?page=' + str(page)       
-        
-        executor.submit(get_cars_on_page, curr_url, dict, lock)
-
-  json_data = json.dumps(dict, indent = 4)
-
-  # if the car_data folder does not exist, create it
-  folder_name = 'car_data/'
-  if not os.path.exists(folder_name):
-    os.mkdir(folder_name)
-
-  now = str(datetime.now())
-  filename = now.replace(' ', '_') + '_carvana.json'
-  filename = 'car_data/' + filename.replace(':', ';')
-  with open(filename, 'w') as output_file:
-    output_file.write(json_data)
-
-  print('Gathered data on', len(dict), 'cars')
-  print('Data written to:', filename)
-
-if __name__ == '__main__':
-  main()
