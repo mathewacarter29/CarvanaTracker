@@ -26,7 +26,6 @@ def get_cars_on_page(url, dict, lock):
     
     page = requests.get(url)
 
-  print('Processing data for:', url)
   soup = BeautifulSoup(page.content, 'html.parser')
 
   results = soup.find_all(attrs={'class': 'result-tile'})
@@ -66,24 +65,49 @@ def get_cars_on_page(url, dict, lock):
 
   lock.acquire()
   dict.update(data)
+  print(f'Got {len(data)} cars on page {url}')
   lock.release()
 
   # time.sleep(1)
   
+'''
+This just gets the maximum number of pages for each type of car
+'''
+def get_max_pages(url, page, max_pages_dict):
+  try:
+    req = requests.get(url)
+  except:
+    print('Error getting page:', url)
+    return
+  
+  soup = BeautifulSoup(req.content, 'html.parser')
+  page_text = soup.find(attrs={'data-qa': 'pagination-text'}).get_text()
+  print(page_text)
+  max_page = page_text.split()[-1]
+  max_pages_dict[page] = int(max_page)
+
 
 def main():
   url = "https://www.carvana.com/cars"
   car_types = ['trucks', 'hatchback', 'sedan', 'coupe', 'electric', 'suv']
   dict = {}
 
+  # To get number of pages, search HTML for data-qa=pagination-text
+  max_pages = {'trucks': 0, 'hatchback': 0, 'sedan': 0, 'coupe': 0, 'electric': 0, 'suv': 0}
+  with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+    for type in car_types:
+      curr_url = f'{url}/{type}'
+      executor.submit(get_max_pages, curr_url, type, max_pages)
+
+  print(max_pages)
+  
   with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     lock = threading.Lock()
-    NUM_PAGES = 50
-    for page in range(1, NUM_PAGES + 1):
-      for type in car_types:
+    for type in car_types:
+      for page in range(1, max_pages[type] + 1):
         curr_url = f'{url}/{type}'
         if page > 1:
-          curr_url += '?page=' + str(page)
+          curr_url += '?page=' + str(page)       
         
         executor.submit(get_cars_on_page, curr_url, dict, lock)
 
