@@ -6,6 +6,14 @@ import threading
 import json
 import time
 
+'''
+Maybe use SQLite instead of a huge JSON file to store car data?
+https://www.askpython.com/python-modules/python-sqlite-module <-- intro article on sqlite3 package
+
+SQLite would be better because we want to save this file and use it for later
+THIS IS A FUTURE ME PROBLEM
+'''
+
 def main():
   res = input('Running this program will overwrite master.json - type \"OVERWRITE\" to continue\n')
   if (res != 'OVERWRITE'):

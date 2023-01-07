@@ -136500,6 +136500,209 @@
       "price": 19990,
       "monthly-payment": "Est.$400/mo",
       "get-it-by": "Jan 11th"
+    },
+    "/vehicle/2357995": {
+      "make-model": "2014 MINI Countryman - Cooper S",
+      "mileage": "56,962 miles",
+      "price": 17990,
+      "monthly-payment": "Est.$370/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2600804": {
+      "make-model": "2021 Chevrolet Spark - LS",
+      "mileage": "13,107 miles",
+      "price": 17990,
+      "monthly-payment": "Est.$368/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2620234": {
+      "make-model": "2019 Hyundai Ioniq Plug-in Hybrid - base",
+      "mileage": "39,864 miles",
+      "price": 23990,
+      "monthly-payment": "Est.$465/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2620712": {
+      "make-model": "2013 Honda Fit - Sport",
+      "mileage": "65,327 miles",
+      "price": 15990,
+      "monthly-payment": "Est.$321/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2604169": {
+      "make-model": "2013 Volkswagen Beetle - 2.5L",
+      "mileage": "65,247 miles",
+      "price": 16590,
+      "monthly-payment": "Est.$332/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2514657": {
+      "make-model": "2020 Toyota Tacoma Double Cab - SR5 5 ft",
+      "mileage": "22,477 miles",
+      "price": 31990,
+      "monthly-payment": "Est.$600/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2623961": {
+      "make-model": "2019 Nissan Frontier Crew Cab - SV 5 ft",
+      "mileage": "39,914 miles",
+      "price": 25990,
+      "monthly-payment": "Est.$490/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2615057": {
+      "make-model": "2016 Ram 1500 Crew Cab - Big Horn 5 1/2 ft",
+      "mileage": "32,542 miles",
+      "price": 32590,
+      "monthly-payment": "Est.$612/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2627908": {
+      "make-model": "2016 Ford F150 Super Cab - XL 6 1/2 ft",
+      "mileage": "20,699 miles",
+      "price": 32990,
+      "monthly-payment": "Est.$636/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2625929": {
+      "make-model": "2020 Toyota Tacoma Double Cab - Limited 5 ft",
+      "mileage": "27,456 miles",
+      "price": 41990,
+      "monthly-payment": "Est.$735/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2625666": {
+      "make-model": "2018 Chevrolet Silverado 1500 Double Cab - LT 6 1/2 ft",
+      "mileage": "10,303 miles",
+      "price": 36990,
+      "monthly-payment": "Est.$693/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2598316": {
+      "make-model": "2016 GMC Sierra 2500 HD Crew Cab - Denali 6 1/2 ft",
+      "mileage": "57,335 miles",
+      "price": 54990,
+      "monthly-payment": "Est.$947/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2625924": {
+      "make-model": "2015 Ford F150 SuperCrew Cab - XLT 5 1/2 ft",
+      "mileage": "81,700 miles",
+      "price": 28590,
+      "monthly-payment": "Est.$560/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2613885": {
+      "make-model": "2017 Toyota Tundra Double Cab - SR 6 1/2 ft",
+      "mileage": "42,241 miles",
+      "price": 31990,
+      "monthly-payment": "Est.$602/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2622812": {
+      "make-model": "2022 Chevrolet Silverado 2500 HD Crew Cab - Custom 6 1/2 ft",
+      "mileage": "9,866 miles",
+      "price": 55590,
+      "monthly-payment": "Est.$952/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2482221": {
+      "make-model": "2012 Hyundai Elantra - GLS",
+      "mileage": "89,821 miles",
+      "price": 12990,
+      "monthly-payment": "Est.$284/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2526573": {
+      "make-model": "2012 MAZDA MAZDA3 - i Grand Touring",
+      "mileage": "101,805 miles",
+      "price": 13590,
+      "monthly-payment": "Est.$290/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2526697": {
+      "make-model": "2019 Honda Insight - LX",
+      "mileage": "47,519 miles",
+      "price": 24990,
+      "monthly-payment": "Est.$485/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2491944": {
+      "make-model": "2015 Hyundai Sonata - Limited 2.0T",
+      "mileage": "82,748 miles",
+      "price": 17590,
+      "monthly-payment": "Est.$355/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2594822": {
+      "make-model": "2019 Chevrolet Sonic - Premier",
+      "mileage": "51,574 miles",
+      "price": 16990,
+      "monthly-payment": "Est.$331/mo",
+      "get-it-by": "Jan 14th"
+    },
+    "/vehicle/2542982": {
+      "make-model": "2013 Scion FR-S - 10 Series",
+      "mileage": "60,112 miles",
+      "price": 21990,
+      "monthly-payment": "Est.$427/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2614735": {
+      "make-model": "2013 Chevrolet Camaro - LT",
+      "mileage": "56,418 miles",
+      "price": 19990,
+      "monthly-payment": "Est.$399/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2466783": {
+      "make-model": "2009 Ford Mustang - GT Deluxe",
+      "mileage": "17,500 miles",
+      "price": 23590,
+      "monthly-payment": "Est.$468/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2442921": {
+      "make-model": "2014 Mercedes-Benz CLA-Class - CLA 250 4MATIC",
+      "mileage": "60,295 miles",
+      "price": 21990,
+      "monthly-payment": "Est.$439/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2555137": {
+      "make-model": "2016 Dodge Challenger - SXT",
+      "mileage": "26,434 miles",
+      "price": 23990,
+      "monthly-payment": "Est.$464/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2553880": {
+      "make-model": "2016 BMW 2 Series - 228i xDrive",
+      "mileage": "52,193 miles",
+      "price": 22590,
+      "monthly-payment": "Est.$439/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2523066": {
+      "make-model": "2014 Chevrolet Camaro - LT",
+      "mileage": "48,179 miles",
+      "price": 20590,
+      "monthly-payment": "Est.$400/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2575437": {
+      "make-model": "2015 BMW i3 - base",
+      "mileage": "35,140 miles",
+      "price": 18590,
+      "monthly-payment": "Est.$361/mo",
+      "get-it-by": "Jan 16th"
+    },
+    "/vehicle/2618779": {
+      "make-model": "2018 Ford EcoSport - SE",
+      "mileage": "83,125 miles",
+      "price": 16590,
+      "monthly-payment": "Est.$344/mo",
+      "get-it-by": "Jan 14th"
     }
   }
 }

@@ -57,24 +57,32 @@ def main():
     # This pulls the date too - we just want the cars
     master_data = json.load(master_file)
     master_cars = master_data['cars']
-    car_added = False
+    cars_added = 0
+    changed = []
     for vehicle in cars:
       # If the car is not in the master data, we want to add it
       if vehicle not in master_cars:
-        car_added = True
+        cars_added += 1
         master_cars[vehicle] = cars[vehicle]
-        print('Vehicle', vehicle, 'added to master list')
-      else:
+      elif cars[vehicle]['price'] != master_cars[vehicle]['price']:
         # If it is in the master data, we want to compare the prices
-        curr_price = cars[vehicle]['price']
-        master_price = master_cars[vehicle]['price']
-        if curr_price != master_price:
-          print('current price:', curr_price, '--- old price:', master_price)
+        print('old price:', master_cars[vehicle]['price'], '--- new price:', cars[vehicle]['price'])
+        kv = {vehicle: cars[vehicle]['price']}
+        changed.append(kv)
 
-  if car_added:
+  if cars_added != 0:
     with open('master.json', 'w') as master_file:
       master_json_data = json.dumps(master_data, indent = 2)
       master_file.write(master_json_data)
+    print(cars_added, 'cars added to master.json')
+
+  if len(changed) != 0:
+    # we want to check to see if this vehicle's price has already been changed (exists in file)
+
+    # if it does, we want to add the current date (dict['date']) and price to that objects list
+
+    # if not, create a new entry with the start being master's date and price
+    print('There are', len(changed), 'updated prices')
 
 
 if __name__ == '__main__':
