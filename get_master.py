@@ -7,6 +7,10 @@ import json
 import time
 
 def main():
+  res = input('Running this program will overwrite master.json - type \"OVERWRITE\" to continue\n')
+  if (res != 'OVERWRITE'):
+    return
+
   url = "https://www.carvana.com/cars"
   car_types = ['trucks', 'hatchback', 'sedan', 'coupe', 'electric', 'suv']
   dict = {'date': int(time.time()), 'cars': {}}
