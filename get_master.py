@@ -4,11 +4,13 @@ from pull_car_data_threads import get_max_pages, get_cars_on_page
 import concurrent.futures
 import threading
 import json
+import time
 
 def main():
   url = "https://www.carvana.com/cars"
   car_types = ['trucks', 'hatchback', 'sedan', 'coupe', 'electric', 'suv']
-  dict = {}
+  dict = {'date': int(time.time()), 'cars': {}}
+  cars = dict['cars']
 
   # To get number of pages, search HTML for data-qa=pagination-text
   max_pages = {'trucks': 0, 'hatchback': 0, 'sedan': 0, 'coupe': 0, 'electric': 0, 'suv': 0}
@@ -25,13 +27,13 @@ def main():
         if page > 1:
           curr_url += '?page=' + str(page)       
         
-        executor.submit(get_cars_on_page, curr_url, dict, lock)
+        executor.submit(get_cars_on_page, curr_url, cars, lock)
 
-  json_data = json.dumps(dict, indent = 4)
+  json_data = json.dumps(dict, indent = 2)
   with open('master.json', 'w') as output_file:
     output_file.write(json_data)
 
-  print(f'Data on {len(dict)} cars written to: master.json')
+  print(f'Data on {len(cars)} cars written to: master.json')
 
 
 if __name__ == '__main__':
