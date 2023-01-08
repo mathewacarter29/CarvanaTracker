@@ -30,7 +30,7 @@ def main():
     for type in car_types:
       # Only go to page 500 because after that basically all cars are repeats
       limit = max_pages[type] + 1 if max_pages[type] <= 500 else 500
-      for page in range(1, 5):
+      for page in range(1, limit):
         curr_url = f'{url}/{type}'
         if page > 1:
           curr_url += '?page=' + str(page)       
@@ -76,7 +76,7 @@ def main():
     with open('master.json', 'w') as master_file:
       master_json_data = json.dumps(master_data, indent = 2)
       master_file.write(master_json_data)
-    print(cars_added, 'cars added to master.json')
+    print('Cars added to master.json:', cars_added)
 
   if len(changed) != 0:
     # we want to check to see if this vehicle's price has already been changed (exists in file)
@@ -94,7 +94,7 @@ def main():
       file.write(json.dumps(changed_json, indent = 2))
 
       # if it does, we want to add the current date (dict['date']) and price to that objects list
-    print('There are', len(changed), 'updated prices')
+    print('Number of updated prices:', len(changed))
 
 
 if __name__ == '__main__':

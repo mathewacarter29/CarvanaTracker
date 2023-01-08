@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import time
+import lxml
+import cchardet
 
 '''
 Goes through a carvana URL and pulls all the cars on the page, adding them to dict
@@ -24,7 +26,7 @@ def get_cars_on_page(url, dict, lock):
     
     page = requests.get(url)
 
-  soup = BeautifulSoup(page.content, 'html.parser')
+  soup = BeautifulSoup(page.content, 'lxml')
 
   results = soup.find_all(attrs={'class': 'result-tile'})
 
@@ -85,7 +87,7 @@ def get_max_pages(url, page, max_pages_dict):
     print('Error getting page:', url)
     return
   
-  soup = BeautifulSoup(req.content, 'html.parser')
+  soup = BeautifulSoup(req.content, 'lxml')
   page_text = soup.find(attrs={'data-qa': 'pagination-text'}).get_text()
   max_page = page_text.split()[-1]
   max_pages_dict[page] = int(max_page)
