@@ -2,12 +2,35 @@
 import json
 from datetime import date
 import sys
+import argparse
+import time
 
 '''
 This program scans changed.json and gets the cars that have changed in price, sorted by
 % price decrease (can be easily edited to be by price decrease in dollars)
 '''
 def main():
+
+  parser = argparse.ArgumentParser(description='Get price decreases from Carvana')
+  parser.add_argument('-m', '--month', action='store_true')
+  parser.add_argument('-d', '--day', action='store_true')
+  parser.add_argument('-r', '--results')
+  args = parser.parse_args()
+  
+  if args.month and args.day:
+    print("Only specify one time period - month or day")
+    return
+  
+  dur = int(time.time())
+  if args.month:
+    # Number of seconds in 30 days
+    dur -= 2_628_288
+  elif args.day:
+    # Number of seconds in a day
+    dur -= 86400
+  else:
+    # If no time period is specified, then we will get discounts from all time
+    dur = 0
   # We want to read the changed.json file and output the data in a friendly manner
   changed_file = open('changed.json', 'r')
   master_file = open('master.json', 'r')
@@ -18,23 +41,19 @@ def main():
   results = []
   for car in data:
     prices = data[car]
-    # any car in the changed.json file must also be in the master.json
-    result = {'car': master[car], 'price_list': prices, 
-    'price_change': list(prices[0].values())[0] - list(prices[-1].values())[-1],
-    'percent_change': (list(prices[0].values())[0] - list(prices[-1].values())[-1]) / list(prices[0].values())[0],
-    'url': f'https://www.carvana.com{car}'}
-    results.append(result)
+    if int(list(prices[-1].keys())[-1]) >= dur:
+      # any car in the changed.json file must also be in the master.json
+      result = {'car': master[car], 'price_list': prices, 
+      'price_change': list(prices[0].values())[0] - list(prices[-1].values())[-1],
+      'percent_change': (list(prices[0].values())[0] - list(prices[-1].values())[-1]) / list(prices[0].values())[0],
+      'url': f'https://www.carvana.com{car}'}
+      results.append(result)
 
   results.sort(key=lambda x: x['percent_change'], reverse=True)
-
+  limit = 10
   # Figure out how many results you want based on the cmd line args
-  if len(sys.argv) == 1:
-    limit = 10
-  elif len(sys.argv) == 2 and sys.argv[1].isdigit():
-    limit = int(sys.argv[1]) if int(sys.argv[1]) <= len(results) else len(results)
-  else:
-    print("Invoke like the following: get_results.py <num results>")
-    return
+  if args.results != None:
+    limit = args.results if args.results <= len(results) else len(results)
 
   print('These are the biggest discounts on the cars Carvana has to offer:\n\n')
   for i in range(limit):
