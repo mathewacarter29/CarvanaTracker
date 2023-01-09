@@ -10,6 +10,12 @@ import concurrent.futures
 import threading 
 import sys
 
+'''
+This program pulls all cars from carvana's inventory and compares their price to previous data
+It outputs the cars that have changed in price to changed.json
+
+Any cars that have never been seen before are added to master.json
+'''
 def main():
   now = str(datetime.now())
   if len(sys.argv) > 1:

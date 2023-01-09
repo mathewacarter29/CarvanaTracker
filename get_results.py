@@ -3,6 +3,10 @@ import json
 from datetime import date
 import sys
 
+'''
+This program scans changed.json and gets the cars that have changed in price, sorted by
+% price decrease (can be easily edited to be by price decrease in dollars)
+'''
 def main():
   # We want to read the changed.json file and output the data in a friendly manner
   changed_file = open('changed.json', 'r')
@@ -38,7 +42,14 @@ def main():
   changed_file.close()
   master_file.close()
   
-
+'''
+Prints the data for a single car object that contains the following fields:
+car: master.json car object with all car data
+price_list: list of prices along with the dates of those prices
+price_change: the change in price from the earliest date to now
+percent_change: the percent of the cars price it has changed by
+url: the URL of the car on carvana's website
+'''
 def print_car_data(car_obj):
   car = car_obj['car']
   print("URL:", car_obj['url'])
@@ -49,6 +60,7 @@ def print_car_data(car_obj):
   for index, kv in enumerate(prices):
     _date = list(kv.keys())[0]
     price = kv[_date]
+    # The keys in JSON must always be strings, so we must cast _date to an int
     print(str(date.fromtimestamp(int(_date))) + ': $' + str(price), end='')
     if (index != len(prices) - 1):
       print(' ---> ', end='')
