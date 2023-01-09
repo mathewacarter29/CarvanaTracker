@@ -37,7 +37,7 @@ def main():
     lock = threading.Lock()
     for type in car_types:
       # Only go to page 500 because after that basically all cars are repeats
-      limit = max_pages[type] + 1 if max_pages[type] <= 500 else 500
+      limit = max_pages[type] + 1 if max_pages[type] <= 500 else 501
       for page in range(1, limit):
         curr_url = f'{url}/{type}'
         if page > 1:
@@ -69,6 +69,7 @@ def main():
       # If the car is not in the master data, we want to add it
       if vehicle not in master_data:
         cars_added += 1
+        cars[vehicle]['date'] = dict['date']
         master_data[vehicle] = cars[vehicle]
       elif cars[vehicle]['price'] != master_data[vehicle]['price']:
         # If it is in the master data, we want to compare the prices
