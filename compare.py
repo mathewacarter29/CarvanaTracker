@@ -8,8 +8,16 @@ import os
 import time
 import concurrent.futures
 import threading 
+import sys
 
 def main():
+  now = str(datetime.now())
+  if len(sys.argv) > 1:
+    if '-l' in sys.argv:
+      log = now.replace(' ', '_') + '_carvana.log'
+      log = 'log/' + log.replace(':', '-')
+      sys.stdout = open(log, 'w')
+
   url = "https://www.carvana.com/cars"
   car_types = ['trucks', 'hatchback', 'sedan', 'coupe', 'electric', 'suv']
   
@@ -30,7 +38,7 @@ def main():
     for type in car_types:
       # Only go to page 500 because after that basically all cars are repeats
       limit = max_pages[type] + 1 if max_pages[type] <= 500 else 500
-      for page in range(1, limit):
+      for page in range(1, 3):
         curr_url = f'{url}/{type}'
         if page > 1:
           curr_url += '?page=' + str(page)       
@@ -44,7 +52,6 @@ def main():
   if not os.path.exists(folder_name):
     os.mkdir(folder_name)
 
-  now = str(datetime.now())
   filename = now.replace(' ', '_') + '_carvana.json'
   filename = 'car_data/' + filename.replace(':', '-')
   with open(filename, 'w') as output_file:
