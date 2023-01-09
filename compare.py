@@ -38,7 +38,7 @@ def main():
     for type in car_types:
       # Only go to page 500 because after that basically all cars are repeats
       limit = max_pages[type] + 1 if max_pages[type] <= 500 else 500
-      for page in range(1, 3):
+      for page in range(1, limit):
         curr_url = f'{url}/{type}'
         if page > 1:
           curr_url += '?page=' + str(page)       
