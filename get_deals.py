@@ -53,7 +53,10 @@ def main():
   limit = 10
   # Figure out how many results you want based on the cmd line args
   if args.results != None:
-    limit = int(args.results) if int(args.results) <= len(results) else len(results)
+    if int(args.results) == -1:
+      limit = len(results)
+    else:
+      limit = int(args.results) if int(args.results) <= len(results) else len(results)
 
   print('These are the biggest discounts on the cars Carvana has to offer:\n\n')
   for i in range(limit):
