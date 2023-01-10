@@ -71,7 +71,7 @@ url: the URL of the car on carvana's website
 '''
 def print_car_data(car_obj):
   car = car_obj['car']
-  print("URL:", car_obj['url'])
+  print(car_obj['url'])
   print('Name:', car['make-model'])
   print('Miles:', car['mileage'])
   print('Price: $' + str(car['price']))
@@ -84,8 +84,9 @@ def print_car_data(car_obj):
     if (index != len(prices) - 1):
       print(' ---> ', end='')
   print()
-  print('$' + str(abs(car_obj['price_change'])), 'decrease' if car_obj['price_change'] > 0 else 'increase')
-  print(round(car_obj['percent_change'] * 100, 2), '% change', sep='')
+  ending = 'decrease' if car_obj['price_change'] > 0 else 'increase'
+  print('$' + str(abs(car_obj['price_change'])), '(' + str(round(car_obj['percent_change'] * 100, 2)) + '%)', ending)
+  # print(round(car_obj['percent_change'] * 100, 2), '% ', ending, sep='')
   print()
   
 
