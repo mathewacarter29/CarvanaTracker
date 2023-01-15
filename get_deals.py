@@ -15,11 +15,16 @@ def main():
   parser.add_argument('-m', '--month', action='store_true')
   parser.add_argument('-d', '--day', action='store_true')
   parser.add_argument('-r', '--results')
+  parser.add_argument('-s', '--search')
+  parser.add_argument('-p', '--price_drop', action='store_true')
   args = parser.parse_args()
   
   if args.month and args.day:
     print("Only specify one time period - month or day")
     return
+
+  if args.search:
+    args.search = args.search.lower()
   
   dur = int(time.time())
   if args.month:
@@ -41,15 +46,20 @@ def main():
   results = []
   for car in data:
     prices = data[car]
-    if int(list(prices[-1].keys())[-1]) >= dur:
-      # any car in the changed.json file must also be in the master.json
-      result = {'car': master[car], 'price_list': prices, 
-      'price_change': list(prices[0].values())[0] - list(prices[-1].values())[-1],
-      'percent_change': (list(prices[0].values())[0] - list(prices[-1].values())[-1]) / list(prices[0].values())[0],
-      'url': f'https://www.carvana.com{car}'}
-      results.append(result)
+    if int(list(prices[-1].keys())[-1]) < dur:
+      continue
+    car_name = master[car]['make-model']
+    if args.search and args.search not in car_name.lower():
+      continue
+    # any car in the changed.json file must also be in the master.json
+    result = {'car': master[car], 'price_list': prices, 
+    'price_change': list(prices[0].values())[0] - list(prices[-1].values())[-1],
+    'percent_change': (list(prices[0].values())[0] - list(prices[-1].values())[-1]) / list(prices[0].values())[0],
+    'url': f'https://www.carvana.com{car}'}
+    results.append(result)
 
-  results.sort(key=lambda x: x['percent_change'], reverse=True)
+  sort_key = 'price_change' if args.price_drop else 'percent_change'
+  results.sort(key=lambda x: x[sort_key], reverse=True)
   limit = 10
   # Figure out how many results you want based on the cmd line args
   if args.results != None:
