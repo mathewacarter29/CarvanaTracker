@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import json
 from datetime import date
 import sys

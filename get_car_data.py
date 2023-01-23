@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from pull_car_data_threads import get_cars_on_page, get_max_pages
 
 from datetime import datetime
